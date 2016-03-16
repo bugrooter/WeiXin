@@ -1,0 +1,429 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="wxdinnerModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+        <EntityContainer Name="wxdinnerModelStoreContainer">
+          <EntitySet Name="SMSLog" EntityType="wxdinnerModel.Store.SMSLog" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tb_Admin" EntityType="wxdinnerModel.Store.tb_Admin" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tb_Dishes" EntityType="wxdinnerModel.Store.tb_Dishes" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tb_Orders" EntityType="wxdinnerModel.Store.tb_Orders" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="VoiceLog" EntityType="wxdinnerModel.Store.VoiceLog" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="WeiXinConfig" EntityType="wxdinnerModel.Store.WeiXinConfig" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="WeiXinMenu" EntityType="wxdinnerModel.Store.WeiXinMenu" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="WeiXinUser" EntityType="wxdinnerModel.Store.WeiXinUser" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="SMSLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="smsFrom" Type="varchar" MaxLength="50" />
+          <Property Name="smsCont" Type="varchar" MaxLength="300" />
+          <Property Name="AddDate" Type="varchar" MaxLength="50" />
+          <Property Name="smsTell" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tb_Admin">
+          <Key>
+            <PropertyRef Name="loginId" />
+          </Key>
+          <Property Name="loginId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="loginName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="loginPwd" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="loginSalt" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="loginState" Type="int" Nullable="false" />
+          <Property Name="loginDate" Type="datetime" />
+          <Property Name="loginIP" Type="varchar" MaxLength="20" />
+          <Property Name="logintimes" Type="int" />
+          <Property Name="loginMail" Type="varchar" MaxLength="50" />
+          <Property Name="loginMobile" Type="varchar" MaxLength="20" />
+          <Property Name="loginFace" Type="varchar" MaxLength="200" />
+          <Property Name="loginTName" Type="varchar" MaxLength="10" />
+          <Property Name="loginRegDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_Dishes">
+          <Key>
+            <PropertyRef Name="dId" />
+          </Key>
+          <Property Name="dId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="dName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="dNum" Type="int" />
+          <Property Name="dPrice" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="dDesc" Type="text" />
+          <Property Name="dImg" Type="varchar" MaxLength="500" />
+          <Property Name="dImgs" Type="text" />
+          <Property Name="dState" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_Orders">
+          <Key>
+            <PropertyRef Name="oId" />
+          </Key>
+          <Property Name="oId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="oName" Type="varchar" MaxLength="50" />
+          <Property Name="oPhone" Type="varchar" MaxLength="50" />
+          <Property Name="oDishes" Type="varchar" MaxLength="500" />
+          <Property Name="oTotal" Type="decimal" Scale="2" />
+          <Property Name="oAddr" Type="varchar" MaxLength="500" />
+          <Property Name="oOrderDate" Type="datetime" />
+          <Property Name="oPushDate" Type="datetime" />
+          <Property Name="oState" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="VoiceLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="voiceCont" Type="image" />
+          <Property Name="AddDate" Type="varchar" MaxLength="50" />
+          <Property Name="smsTell" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="WeiXinConfig">
+          <Key>
+            <PropertyRef Name="wId" />
+          </Key>
+          <Property Name="wId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="WeiXinName" Type="varchar" MaxLength="50" />
+          <Property Name="WeiXinID" Type="varchar" MaxLength="500" />
+          <Property Name="AppID" Type="varchar" MaxLength="500" />
+          <Property Name="AppSecret" Type="varchar" MaxLength="500" />
+          <Property Name="URL" Type="varchar" MaxLength="500" />
+          <Property Name="Token" Type="varchar" MaxLength="100" />
+          <Property Name="EncodingAESKey" Type="varchar" MaxLength="500" />
+          <Property Name="EnMode" Type="int" />
+          <Property Name="IsApply" Type="bit" />
+          <Property Name="loginId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="WeiXinMenu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="weixinid" Type="varchar" MaxLength="500" />
+          <Property Name="parentid" Type="bigint" />
+          <Property Name="parentname" Type="varchar" MaxLength="50" />
+          <Property Name="menuName" Type="varchar" MaxLength="50" />
+          <Property Name="menuType" Type="varchar" MaxLength="50" />
+          <Property Name="menuKey" Type="varchar" MaxLength="300" />
+          <Property Name="menuUrl" Type="varchar" MaxLength="500" />
+          <Property Name="menuMediaid" Type="varchar" MaxLength="500" />
+          <Property Name="sort" Type="int" />
+          <Property Name="state" Type="int" />
+        </EntityType>
+        <EntityType Name="WeiXinUser">
+          <Key>
+            <PropertyRef Name="uId" />
+          </Key>
+          <Property Name="uId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="weixinid" Type="varchar" MaxLength="500" />
+          <Property Name="subscribe" Type="varchar" MaxLength="10" />
+          <Property Name="openid" Type="varchar" MaxLength="500" />
+          <Property Name="nickname" Type="varchar" MaxLength="50" />
+          <Property Name="sex" Type="varchar" MaxLength="10" />
+          <Property Name="city" Type="varchar" MaxLength="50" />
+          <Property Name="country" Type="varchar" MaxLength="50" />
+          <Property Name="province" Type="varchar" MaxLength="50" />
+          <Property Name="language" Type="varchar" MaxLength="50" />
+          <Property Name="headimgurl" Type="varchar" MaxLength="500" />
+          <Property Name="subscribe_time" Type="datetime" />
+          <Property Name="unionid" Type="varchar" MaxLength="500" />
+          <Property Name="remark" Type="varchar" MaxLength="500" />
+          <Property Name="groupid" Type="varchar" MaxLength="500" />
+          <Property Name="adddate" Type="datetime" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="wxdinnerModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+        <EntityContainer Name="dbjmtEntities">
+          <EntitySet Name="tb_Admin" EntityType="wxdinnerModel.tb_Admin" />
+          <EntitySet Name="tb_Dishes" EntityType="wxdinnerModel.tb_Dishes" />
+          <EntitySet Name="tb_Orders" EntityType="wxdinnerModel.tb_Orders" />
+          <EntitySet Name="WeiXinConfig" EntityType="wxdinnerModel.WeiXinConfig" />
+          <EntitySet Name="WeiXinMenu" EntityType="wxdinnerModel.WeiXinMenu" />
+          <EntitySet Name="WeiXinUser" EntityType="wxdinnerModel.WeiXinUser" />
+          <EntitySet Name="SMSLog" EntityType="wxdinnerModel.SMSLog" />
+          <EntitySet Name="VoiceLog" EntityType="wxdinnerModel.VoiceLog" />
+        </EntityContainer>
+        <EntityType Name="tb_Admin">
+          <Key>
+            <PropertyRef Name="loginId" />
+          </Key>
+          <Property Type="Int64" Name="loginId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="loginName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="loginPwd" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="loginSalt" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="loginState" Nullable="false" />
+          <Property Type="DateTime" Name="loginDate" />
+          <Property Type="String" Name="loginIP" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="logintimes" />
+          <Property Type="String" Name="loginMail" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="loginMobile" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="loginFace" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="loginTName" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="loginRegDate" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_Dishes">
+          <Key>
+            <PropertyRef Name="dId" />
+          </Key>
+          <Property Type="Int64" Name="dId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="dName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="dNum" />
+          <Property Type="Decimal" Name="dPrice" Precision="10" Scale="2" />
+          <Property Type="String" Name="dDesc" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="dImg" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="dImgs" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="dState" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_Orders">
+          <Key>
+            <PropertyRef Name="oId" />
+          </Key>
+          <Property Type="Int64" Name="oId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="oName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="oPhone" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="oDishes" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="oTotal" Precision="18" Scale="2" />
+          <Property Type="String" Name="oAddr" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="oOrderDate" />
+          <Property Type="DateTime" Name="oPushDate" />
+          <Property Type="String" Name="oState" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="WeiXinConfig">
+          <Key>
+            <PropertyRef Name="wId" />
+          </Key>
+          <Property Type="Int64" Name="wId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="WeiXinName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="WeiXinID" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AppID" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AppSecret" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="URL" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Token" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EncodingAESKey" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="EnMode" />
+          <Property Type="Boolean" Name="IsApply" />
+          <Property Type="Int64" Name="loginId" />
+        </EntityType>
+        <EntityType Name="WeiXinMenu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="weixinid" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="parentid" />
+          <Property Type="String" Name="parentname" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="menuName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="menuType" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="menuKey" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="menuUrl" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="menuMediaid" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="sort" />
+          <Property Type="Int32" Name="state" />
+        </EntityType>
+        <EntityType Name="WeiXinUser">
+          <Key>
+            <PropertyRef Name="uId" />
+          </Key>
+          <Property Type="Int64" Name="uId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="weixinid" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="subscribe" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="openid" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="nickname" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="sex" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="city" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="country" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="province" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="language" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="headimgurl" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="subscribe_time" />
+          <Property Type="String" Name="unionid" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="remark" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="groupid" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="adddate" />
+        </EntityType>
+        <EntityType Name="SMSLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="smsFrom" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="smsCont" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AddDate" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="smsTell" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="VoiceLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Binary" Name="voiceCont" MaxLength="Max" FixedLength="false" />
+          <Property Type="String" Name="AddDate" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="smsTell" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+        <EntityContainerMapping StorageEntityContainer="wxdinnerModelStoreContainer" CdmEntityContainer="dbjmtEntities">
+          <EntitySetMapping Name="tb_Admin">
+            <EntityTypeMapping TypeName="wxdinnerModel.tb_Admin">
+              <MappingFragment StoreEntitySet="tb_Admin">
+                <ScalarProperty Name="loginRegDate" ColumnName="loginRegDate" />
+                <ScalarProperty Name="loginTName" ColumnName="loginTName" />
+                <ScalarProperty Name="loginFace" ColumnName="loginFace" />
+                <ScalarProperty Name="loginMobile" ColumnName="loginMobile" />
+                <ScalarProperty Name="loginMail" ColumnName="loginMail" />
+                <ScalarProperty Name="logintimes" ColumnName="logintimes" />
+                <ScalarProperty Name="loginIP" ColumnName="loginIP" />
+                <ScalarProperty Name="loginDate" ColumnName="loginDate" />
+                <ScalarProperty Name="loginState" ColumnName="loginState" />
+                <ScalarProperty Name="loginSalt" ColumnName="loginSalt" />
+                <ScalarProperty Name="loginPwd" ColumnName="loginPwd" />
+                <ScalarProperty Name="loginName" ColumnName="loginName" />
+                <ScalarProperty Name="loginId" ColumnName="loginId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Dishes">
+            <EntityTypeMapping TypeName="wxdinnerModel.tb_Dishes">
+              <MappingFragment StoreEntitySet="tb_Dishes">
+                <ScalarProperty Name="dState" ColumnName="dState" />
+                <ScalarProperty Name="dImgs" ColumnName="dImgs" />
+                <ScalarProperty Name="dImg" ColumnName="dImg" />
+                <ScalarProperty Name="dDesc" ColumnName="dDesc" />
+                <ScalarProperty Name="dPrice" ColumnName="dPrice" />
+                <ScalarProperty Name="dNum" ColumnName="dNum" />
+                <ScalarProperty Name="dName" ColumnName="dName" />
+                <ScalarProperty Name="dId" ColumnName="dId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Orders">
+            <EntityTypeMapping TypeName="wxdinnerModel.tb_Orders">
+              <MappingFragment StoreEntitySet="tb_Orders">
+                <ScalarProperty Name="oState" ColumnName="oState" />
+                <ScalarProperty Name="oPushDate" ColumnName="oPushDate" />
+                <ScalarProperty Name="oOrderDate" ColumnName="oOrderDate" />
+                <ScalarProperty Name="oAddr" ColumnName="oAddr" />
+                <ScalarProperty Name="oTotal" ColumnName="oTotal" />
+                <ScalarProperty Name="oDishes" ColumnName="oDishes" />
+                <ScalarProperty Name="oPhone" ColumnName="oPhone" />
+                <ScalarProperty Name="oName" ColumnName="oName" />
+                <ScalarProperty Name="oId" ColumnName="oId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WeiXinConfig">
+            <EntityTypeMapping TypeName="wxdinnerModel.WeiXinConfig">
+              <MappingFragment StoreEntitySet="WeiXinConfig">
+                <ScalarProperty Name="loginId" ColumnName="loginId" />
+                <ScalarProperty Name="IsApply" ColumnName="IsApply" />
+                <ScalarProperty Name="EnMode" ColumnName="EnMode" />
+                <ScalarProperty Name="EncodingAESKey" ColumnName="EncodingAESKey" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="AppSecret" ColumnName="AppSecret" />
+                <ScalarProperty Name="AppID" ColumnName="AppID" />
+                <ScalarProperty Name="WeiXinID" ColumnName="WeiXinID" />
+                <ScalarProperty Name="WeiXinName" ColumnName="WeiXinName" />
+                <ScalarProperty Name="wId" ColumnName="wId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WeiXinMenu">
+            <EntityTypeMapping TypeName="wxdinnerModel.WeiXinMenu">
+              <MappingFragment StoreEntitySet="WeiXinMenu">
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="sort" ColumnName="sort" />
+                <ScalarProperty Name="menuMediaid" ColumnName="menuMediaid" />
+                <ScalarProperty Name="menuUrl" ColumnName="menuUrl" />
+                <ScalarProperty Name="menuKey" ColumnName="menuKey" />
+                <ScalarProperty Name="menuType" ColumnName="menuType" />
+                <ScalarProperty Name="menuName" ColumnName="menuName" />
+                <ScalarProperty Name="parentname" ColumnName="parentname" />
+                <ScalarProperty Name="parentid" ColumnName="parentid" />
+                <ScalarProperty Name="weixinid" ColumnName="weixinid" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WeiXinUser">
+            <EntityTypeMapping TypeName="wxdinnerModel.WeiXinUser">
+              <MappingFragment StoreEntitySet="WeiXinUser">
+                <ScalarProperty Name="adddate" ColumnName="adddate" />
+                <ScalarProperty Name="groupid" ColumnName="groupid" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="unionid" ColumnName="unionid" />
+                <ScalarProperty Name="subscribe_time" ColumnName="subscribe_time" />
+                <ScalarProperty Name="headimgurl" ColumnName="headimgurl" />
+                <ScalarProperty Name="language" ColumnName="language" />
+                <ScalarProperty Name="province" ColumnName="province" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="sex" ColumnName="sex" />
+                <ScalarProperty Name="nickname" ColumnName="nickname" />
+                <ScalarProperty Name="openid" ColumnName="openid" />
+                <ScalarProperty Name="subscribe" ColumnName="subscribe" />
+                <ScalarProperty Name="weixinid" ColumnName="weixinid" />
+                <ScalarProperty Name="uId" ColumnName="uId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SMSLog">
+            <EntityTypeMapping TypeName="wxdinnerModel.SMSLog">
+              <MappingFragment StoreEntitySet="SMSLog">
+                <ScalarProperty Name="smsTell" ColumnName="smsTell" />
+                <ScalarProperty Name="AddDate" ColumnName="AddDate" />
+                <ScalarProperty Name="smsCont" ColumnName="smsCont" />
+                <ScalarProperty Name="smsFrom" ColumnName="smsFrom" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VoiceLog">
+            <EntityTypeMapping TypeName="wxdinnerModel.VoiceLog">
+              <MappingFragment StoreEntitySet="VoiceLog">
+                <ScalarProperty Name="smsTell" ColumnName="smsTell" />
+                <ScalarProperty Name="AddDate" ColumnName="AddDate" />
+                <ScalarProperty Name="voiceCont" ColumnName="voiceCont" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model1">
+        <EntityTypeShape EntityType="wxdinnerModel.tb_Admin" Width="1.5" PointX="0.75" PointY="0.75" Height="3.4981901041666665" />
+        <EntityTypeShape EntityType="wxdinnerModel.tb_Dishes" Width="1.5" PointX="2.75" PointY="0.75" Height="2.5430916341145817" />
+        <EntityTypeShape EntityType="wxdinnerModel.tb_Orders" Width="1.5" PointX="4.75" PointY="0.75" Height="2.7341113281249996" />
+        <EntityTypeShape EntityType="wxdinnerModel.WeiXinConfig" Width="1.5" PointX="2.75" PointY="4.75" Height="3.1161507161458317" />
+        <EntityTypeShape EntityType="wxdinnerModel.WeiXinMenu" Width="1.5" PointX="4.75" PointY="4.75" Height="3.1161507161458353" />
+        <EntityTypeShape EntityType="wxdinnerModel.WeiXinUser" Width="1.5" PointX="6.75" PointY="0.75" Height="4.0712491861979174" />
+        <EntityTypeShape EntityType="wxdinnerModel.SMSLog" Width="1.5" PointX="7.75" PointY="5.75" Height="1.9700325520833317" />
+        <EntityTypeShape EntityType="wxdinnerModel.VoiceLog" Width="1.5" PointX="0.75" PointY="8.75" Height="1.7790128580729174" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

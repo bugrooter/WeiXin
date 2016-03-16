@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>后台管理系统-登陆界面</title>
+    <link href="/Content/css/login.css" rel="stylesheet" type="text/css" />
+    <script src="/Scripts/jquery-1.11.0.min.js" type="text/javascript"></script>
+    <script src="/Scripts/jquery.form.js" type="text/javascript"></script>
+    <script src="/Scripts/common.js" type="text/javascript"></script>
+    <script src="/Scripts/jquery-ui.js" type="text/javascript"></script>
+    <script src="/Scripts/main.js" type="text/javascript"></script>
+    <style type="text/css"> 
+	#loading{position:fixed;_position:absolute;top:50%;left:50%;width:100%;height:100%px;overflow:hidden; no-repeat;z-index:7; margin:-62px 0 0 -62px;}  
+    </style>
+    <script type="text/javascript">
+        function doLogin() {
+            if (document.getElementById('uname').value == "") {
+                msg_error("请输入登录帐号");
+                document.getElementById('uname').focus();
+                return;
+            }
+            if (document.getElementById('pwd').value == "") {
+                msg_error("请输入登录密码");
+                document.getElementById('pwd').focus();
+                return;
+            }
+            if (document.getElementById('code').value == "") {
+                msg_error("请输入验证码");
+                document.getElementById('code').focus();
+                return;
+            }
+            postLogin();
+        }
+
+        function postLogin()
+        {
+            ${JQ}ajax({
+                type: 'post',
+                url: '/public/action/DataHandler.ashx?action=logindo',
+                data: $('#loginForm').serialize(),
+                dataType: 'text',
+                beforeSend: function () { msg_loading('系统登录中...'); },
+                success: function (msg) {  //操作成功后的处理
+                    var obj = jQuery.parseJSON(msg);
+                    if (obj.success == false) {  //业务逻辑操作失败  
+                        msg_alter("登录失败，原因是:" + obj.info);
+                        document.getElementById("mycode").src = '/public/tools/vercode.aspx?math=' + Math.random();
+                        document.getElementById('code').value = "";
+                    } else {	//业务逻辑操作成功 
+                        top.location.href = '/index.aspx?action=common_index';
+                    }
+                },
+                error: function (msg) { //系统错误后的处理  
+                    msg_alter("登录失败，未知原因!");
+                }
+            }); 
+        }
+
+        var simple = null;
+
+        function getCookie(c_name) {
+            if (document.cookie.length > 0) {
+                c_start = document.cookie.indexOf(c_name + "=");
+                if (c_start != -1) {
+                    c_start = c_start + c_name.length + 1;
+                    c_end = document.cookie.indexOf(";", c_start);
+                    if (c_end == -1) c_end = document.cookie.length;
+                    return decodeURI(document.cookie.substring(c_start, c_end));
+                }
+            }
+            return "";
+        }
+        function LoginFocus(id) {
+            document.getElementById(id).className = "focus";
+        }
+
+        function LoginBlur(id) {
+            var obj = document.getElementById(id);
+            if (obj.value == "") {
+                obj.className = "error_blur";
+                return;
+            } else {
+                obj.className = "txt_bg";
+            }
+        }
+
+        function CodeBlur(id) {
+            var obj = document.getElementById(id);
+            if (obj.value == "") {
+                obj.className = "code_error_blur";
+                return;
+            } else {
+                obj.className = "txt_bg01";
+                //doLogin();
+            }
+        }
+
+        function jumpImg() {
+            document.getElementById("mycode").src = '/public/tools/vercode.aspx?math=' + Math.random();
+        }
+
+        function BindEnter(obj, num) {
+            if (obj.keyCode == 13) {
+                if (num == 1) {
+                    document.getElementById('pwd').focus();
+                } else if (num == 2) {
+                    document.getElementById('code').focus();
+                } else if (num = 3) {
+                    doLogin();
+                }
+            }
+        }
+
+        $(function () {
+            var gate = getCookie("repwd");
+            if (gate == "on") {
+                $("#auto").prop("checked", true);
+                $("#uname").val(getCookie("username"));
+                $("#pwd").val(getCookie("userpwd"));
+            }
+            else {
+                delCookie("username");
+                delCookie("userpwd");
+                $("#auto").prop("checked", false);
+                $("#uname").val("");
+                $("#pwd").val("");
+            }
+        });
+    </script>
+</head>
+<body scroll="no" style="background-color: #23669B;">
+    <form id="loginForm">
+    <div id="loading" style="display: none; valign: center">
+        <img src="/Content/images/load2.gif">
+        系统登录中...</div>
+    <div align="center" id="loginForm" style="display: none;">
+    </div>
+    <div class="cent">
+        <div class="left">
+        </div>
+        <div class="cent_bg">
+            <div class="logo">
+                <img style="width: 286px; height: 48px;" src="/Content/images/logo_l.png" /></div>
+            <div class="text">
+                后台管理系统</div>
+            <div class="txt_d">
+                <div style="padding-bottom: 8px;">
+                    <span class="span01">用户名</span>
+                    <input id="uname" name="username" type="text" class="txt_bg" autocomplete="off" onfocus="LoginFocus('uname');"
+                        onkeydown="BindEnter(event,1)" onblur="LoginBlur('uname');" placeholder="用户名或邮箱" />
+                </div>
+                <div style="padding-bottom: 8px;">
+                    <span class="span01">密 &nbsp;码</span>
+                    <input id="pwd" name="password" type="password" class="txt_bg" autocomplete="off"
+                        onfocus="LoginFocus('pwd');" onkeydown="BindEnter(event,2)" onblur="LoginBlur('pwd');" placeholder="用户名密码" />
+                </div>
+                <div style="clear: both; height: 60px;">
+                    <span class="span01">验证码</span>
+                    <input id="code" name="vercode" type="text" class="txt_bg01" onfocus="this.className='code_focus';"
+                        onkeydown="BindEnter(event,3)" onblur="CodeBlur('code');" placeholder="验证码" />
+                    <img id="mycode" width="104" onclick="jumpImg();" height="44" src="/public/tools/vercode.aspx"
+                        style="float: left; cursor: pointer;" />
+                </div>
+                <div class="txt_d2">
+                    <label>
+                        <input id="auto" name="rempwd" value="on" type="checkbox" class="box" />记住用户名和密码</label></div>
+                <div class="txt_d3">
+                    <input id="login" name="login" type="button" onclick="doLogin();" style="color:#fff;font-size:26px;font-weight:bolid;" value="登录" class="buttom_bg" /></div>
+            </div>
+            <div style="clear: both; margin: 0px; padding: 0px;">
+            </div>
+            <div class="copy">
+                &copy; 2014 <a href="http://www.anum.cn" target="_blank">Anum 科技</a></div>
+        </div>
+        <div class="right">
+        </div>
+    </div>
+    </form>
+</body>
+</html>

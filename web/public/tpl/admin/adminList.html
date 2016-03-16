@@ -1,0 +1,107 @@
+﻿<script type="text/javascript" language="javascript">
+    $(document).ready(function () {
+        $(".table").delegate("tr", "mouseover", function () {
+            if ($(".table tr").index(this) > 0) {
+                $(".tr_on").removeClass("tr_on").css("background-color", "#fff");
+                $(this).addClass("tr_on").css("background-color", "#D1D1D1");
+            }
+        });
+    });
+</script>
+<!-- AJAX无刷新 更新内容区 sart -->
+<div class="wrapper">
+    <div class="primary-head">
+        <h3 class="primary-page-header">
+            $Model.Title</h3>
+        <ul class="top-right-toolbar">
+            <li><a class="icon-plus blue-violate" href="#" onclick="dialog_div(560,268,'/public/action/DataHandler.ashx?action=GetForm&method=form_admin','用户信息编辑',null,true);return false;"></a></li>
+        </ul>
+        <!-- 搜索 start -->
+        <div class="search-head">
+            <form id="list_search_form" onsubmit="return false;">
+            <input type="text" style="width:260px;" maxlength="30" id="sWhere" name="sWhere" value="$Model.FormParam.AdminName" size="40"/>
+            <button class="btn-search icon-search" type="input" onclick="LoadListData({getUrl:'/public/action/DataHandler.ashx?action=QueryList',postData:'method=list_admin',formId:'#list_search_form'});">
+            </button></form>
+        </div>
+        <!-- 搜索 end -->
+    </div>
+    <div class="widget-wrap">
+        <div class="widget-head bondi-blue">
+            列表</div>
+        <div class="widget-body">
+            <table class="table">
+                <tr>
+                <th style="width:3%;">
+                       <input id="setall" onchange="selectAll(this);" onpropertychange="selectAll(this);" type="checkbox" />
+                    </th>
+                    <th style="width:10%;">
+                        .No
+                    </th>
+                    <th style="width:15%;">
+                        登陆名称
+                    </th>
+                    <th style="width:15%;">
+                        用户状态
+                    </th>
+                    <th style="width:15%;">
+                        登录次数
+                    </th>
+                    <th style="width:15%;">
+                        最后登陆时间
+                    </th>
+                    <th style="width:15%;">
+                        最后登陆IP
+                    </th>
+                    <th style="width:15%;">
+                        操作
+                    </th>
+                </tr>
+                #if($Model.AdminsList.Count>0)
+                #set($nom=1)
+                #foreach($item in $Model.AdminsList)
+                <tr>
+                    <td>
+                    <input name="dropcheck" value="$!{item.loginId}" type="checkbox" />
+                    </td>
+                    <td>
+                        $nom
+                    </td>
+                    <td>
+                        $!item.loginName
+                    </td>
+                    <td>
+                        #if($!item.loginState==0)
+                        允许登陆
+                        #elseif($!item.loginState==1)
+                        锁定登陆
+                        #else
+                        其他
+                        #end
+                    </td>
+                    <td>
+                        $!item.logintimes
+                    </td>
+                    <td>
+                       $!item.loginDate
+                    </td>
+                    <td>
+                       $!item.loginIP
+                    </td>
+                    <td>
+                        <a class="btn icon-edit bondi-blue" href="javascript:;" onclick="dialog_div(560,268,'/public/action/DataHandler.ashx?action=GetForm&method=form_admin&id=$!{item.loginId}','用户信息编辑',null,true);return false;"></a>
+                        <a class="btn icon-trash green" href="javascript:;" onclick="HanlerListData({getUrl:'/public/action/DataHandler.ashx?action=DelDo',postData:'id=$!{item.loginId}&method=del_admin',formId:null,callBack:LoadListData,callParams:{getUrl:'/public/action/DataHandler.ashx?action=QueryList',postData:'method=list_admin&curpage=$Model.CurPage',formId:'#list_search_form'}});"></a>
+                    </td>
+                </tr>
+                #set($nom=$nom+1)
+                #end
+                #end
+            </table>
+        </div>
+        <div class="widget-bottom">
+            <a href="javascript:void(0);" #if($Model.CurPage>1)onclick="gopage(0,'list_admin');"#else style="color:#fff;" #end>首页</a><a href="javascript:void(0);" #if($Model.CurPage>1)onclick="gopage(-1,'list_admin');"#else style="color:#fff;" #end>上一页</a>
+            <a href="javascript:void(0);" #if($Model.CurPage<$Model.PageCount)onclick="gopage(1,'list_admin');"#else style="color:#fff;" #end>下一页</a><a href="javascript:void(0);" #if($Model.CurPage<$Model.PageCount)onclick="gopage(2,'list_admin');"#else style="color:#fff;" #end>尾页</a>
+            <span class="bspan">共<span class="totalcount">$Model.TotalCount</span>条记录&nbsp;&nbsp;第<span id="curpage">$Model.CurPage</span>页/共<span id="totalpage">$Model.PageCount</span>页&nbsp;<input type="text" style="width:36px;height:13px;" id="gogo" /><a href="javascript:void(0);" onclick="gopage(3,'list_admin');">GO</a></span>
+            </div>
+    </div>
+</div>
+<!-- AJAX无刷新 更新内容区 end -->

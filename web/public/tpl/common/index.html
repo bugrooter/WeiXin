@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>后台管理系统-首页</title>
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link href="/Content/css/font-awesome.css" rel="stylesheet" />
+    <!--[if IE 7]>
+    <link href="/Content/webcss/font-awesome-ie7.min.css" rel="stylesheet" />
+    <![endif]-->
+    <link href="/Content/css/jquery-ui.css" rel="stylesheet" />
+    <link href="/Content/css/main.css" rel="stylesheet" />
+    <link href="/Content/css/index.css" rel="stylesheet" />
+    <script src="/Scripts/jquery-1.11.0.min.js" type="text/javascript"></script>
+    <script src="/Scripts/jquery.form.js" type="text/javascript"></script>
+    <script src="/Scripts/main.js" type="text/javascript"></script>
+    <script src="/Scripts/common.js" type="text/javascript"></script>
+    <script src="/Scripts/colorpanel.js" type="text/javascript"></script>
+    <script src="/Scripts/jquery-ui.js" type="text/javascript"></script>
+    <script src="/Content/ueditor/ueditor.config.js" type="text/javascript"></script>
+    <script src="/Content/ueditor/ueditor.all.js" type="text/javascript"></script>
+    <script src="/Content/ueditor/lang/zh-cn/zh-cn.js" type="text/javascript"></script>
+    <link href="/Content/ueditor/themes/iframe.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .bondi-blue
+        {
+            background-color: #0093DD;
+        }
+        .sidebar
+        {
+            background-color: #E1E1E1;
+        }
+        .lay-head
+        {
+            background-color: #000000;
+        }
+    </style>
+    <script type="text/javascript" language="javascript">
+        function checkFrom() {
+
+            return true;
+        }
+        $(function () {
+            $("#tab_Nav_30").find("li").eq(0).find("a").addClass("curr");
+            LoadListData({ getUrl: "/public/action/DataHandler.ashx?action=QueryList", postData: "method=list_admin" });
+        });
+    </script>
+</head>
+<body scroll="0" style="overflow: hidden; min-width: 850px;">
+    <!-- header start -->
+    <div class="lay-head">
+        <a class="brand" href="javascript:;">
+            <img src="/Content/images/GetLogoImage.png" style="width: 140px; height: 50px;" /></a><a
+                class="home icon-home" href="/index.aspx"> </a>
+        <ul class="nav">
+            <li id="" class="dropdown"><a href="#tab_Nav_30"><i class="icon-cogs "></i>系统管理 <em
+                class="downbtn icon-angle-down"></em></a>
+                <ul>
+                    <li><a href="javascript:void(0);" onclick="LoadListData({getUrl:&quot;/public/action/DataHandler.ashx?action=QueryList&quot;,postData:&quot;method=list_admin&quot;});$(&quot;#open&quot;)[0].id=&quot;&quot;;">
+                        <i class=""></i>用户管理</a></li>
+                    <li><a href="javascript:void(0);" onclick="LoadListData({getUrl:&quot;/public/action/DataHandler.ashx?action=QueryList&quot;,postData:&quot;method=list_weixin&quot;});$(&quot;#open&quot;)[0].id=&quot;&quot;;">
+                        <i class=""></i>微信管理</a></li>
+                    <li><a href="javascript:void(0);" onclick="LoadListData({getUrl:&quot;/public/action/DataHandler.ashx?action=QueryList&quot;,postData:&quot;method=list_weixinmenu&quot;});$(&quot;#open&quot;)[0].id=&quot;&quot;;">
+                        <i class=""></i>微信菜单</a></li>
+                    <li><a href="javascript:void(0);" onclick="LoadListData({getUrl:&quot;/public/action/DataHandler.ashx?action=QueryList&quot;,postData:&quot;method=list_weixinuser&quot;});$(&quot;#open&quot;)[0].id=&quot;&quot;;">
+                        <i class=""></i>微信用户</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <!-- header end -->
+    <div class="lay-body">
+        <!-- sidebar start -->
+        <div class="sidebar" id="sidebar">
+            <div class="admin-info clearfix">
+                <div class="admin-thumb">
+                    <img src="/Content/images/user-thumb.png" style="width: 53px; height: 53px;" />
+                </div>
+                <div class="admin-meta">
+                    <ul>
+                        <li>$!Model.name </li>
+                        <li><a href="javascript:;" onclick="dialog_div(560,268,'/public/action/DataHandler.ashx?action=GetForm&method=form_admin&id=2&mode=0','修改登录密码',null,true);return false;">
+                            修改登录密码</a></li>
+                        <li><a href="#" onclick="">个人信息</a> <a href="/index.aspx?action=common_logout"><i class="icon-lock"></i>
+                            退出登陆</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="height: 355px;" class="left-nav">
+                <div class="left-primary-nav bondi-blue">
+                    <ul id="myTab">
+                        <li><a class="icon-home" href="#"></a></li>
+                        <li class="active"><a class="icon-cogs " href="#tab_Nav_30"></a></li>
+                    </ul>
+                </div>
+                <div class="left-secondary-nav tab-content">
+                    <div class="tab-pane " id="tab_Nav_30" style="display:block;">
+                        <h3 class="side-head">
+                            系统管理</h3>
+                        <ul class="accordion-nav">
+                            <li><a href="javascript:void(0);" onclick="LoadListData({getUrl:&quot;/public/action/DataHandler.ashx?action=QueryList&quot;,postData:&quot;method=list_admin&quot;});return false;">
+                                <i class=" icon-user-md"></i>用户管理</a></li>
+                            <li><a href="javascript:void(0);" onclick="LoadListData({getUrl:&quot;/public/action/DataHandler.ashx?action=QueryList&quot;,postData:&quot;method=list_weixin&quot;});return false;">
+                                <i class=" icon-comments"></i>微信管理</a></li>
+                            <li><a href="javascript:void(0);" onclick="LoadListData({getUrl:&quot;/public/action/DataHandler.ashx?action=QueryList&quot;,postData:&quot;method=list_weixinmenu&quot;});return false;">
+                                <i class=" icon-list"></i>微信菜单</a></li>
+                            <li><a href="javascript:void(0);" onclick="LoadListData({getUrl:&quot;/public/action/DataHandler.ashx?action=QueryList&quot;,postData:&quot;method=list_weixinuser&quot;});return false;">
+                                <i class=" icon-group"></i>微信用户</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- sidebar end -->
+        <div class="content" id="content">
+            <!-- AJAX无刷新 更新内容区 sart -->
+            <!-- 模态窗口表单 end -->
+        </div>
+    </div>
+</body>
+</html>

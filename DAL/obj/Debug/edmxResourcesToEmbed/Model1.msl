@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+  <EntityContainerMapping StorageEntityContainer="wxdinnerModelStoreContainer" CdmEntityContainer="dbjmtEntities">
+    <EntitySetMapping Name="tb_Admin">
+      <EntityTypeMapping TypeName="wxdinnerModel.tb_Admin">
+        <MappingFragment StoreEntitySet="tb_Admin">
+          <ScalarProperty Name="loginRegDate" ColumnName="loginRegDate" />
+          <ScalarProperty Name="loginTName" ColumnName="loginTName" />
+          <ScalarProperty Name="loginFace" ColumnName="loginFace" />
+          <ScalarProperty Name="loginMobile" ColumnName="loginMobile" />
+          <ScalarProperty Name="loginMail" ColumnName="loginMail" />
+          <ScalarProperty Name="logintimes" ColumnName="logintimes" />
+          <ScalarProperty Name="loginIP" ColumnName="loginIP" />
+          <ScalarProperty Name="loginDate" ColumnName="loginDate" />
+          <ScalarProperty Name="loginState" ColumnName="loginState" />
+          <ScalarProperty Name="loginSalt" ColumnName="loginSalt" />
+          <ScalarProperty Name="loginPwd" ColumnName="loginPwd" />
+          <ScalarProperty Name="loginName" ColumnName="loginName" />
+          <ScalarProperty Name="loginId" ColumnName="loginId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_Dishes">
+      <EntityTypeMapping TypeName="wxdinnerModel.tb_Dishes">
+        <MappingFragment StoreEntitySet="tb_Dishes">
+          <ScalarProperty Name="dState" ColumnName="dState" />
+          <ScalarProperty Name="dImgs" ColumnName="dImgs" />
+          <ScalarProperty Name="dImg" ColumnName="dImg" />
+          <ScalarProperty Name="dDesc" ColumnName="dDesc" />
+          <ScalarProperty Name="dPrice" ColumnName="dPrice" />
+          <ScalarProperty Name="dNum" ColumnName="dNum" />
+          <ScalarProperty Name="dName" ColumnName="dName" />
+          <ScalarProperty Name="dId" ColumnName="dId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_Orders">
+      <EntityTypeMapping TypeName="wxdinnerModel.tb_Orders">
+        <MappingFragment StoreEntitySet="tb_Orders">
+          <ScalarProperty Name="oState" ColumnName="oState" />
+          <ScalarProperty Name="oPushDate" ColumnName="oPushDate" />
+          <ScalarProperty Name="oOrderDate" ColumnName="oOrderDate" />
+          <ScalarProperty Name="oAddr" ColumnName="oAddr" />
+          <ScalarProperty Name="oTotal" ColumnName="oTotal" />
+          <ScalarProperty Name="oDishes" ColumnName="oDishes" />
+          <ScalarProperty Name="oPhone" ColumnName="oPhone" />
+          <ScalarProperty Name="oName" ColumnName="oName" />
+          <ScalarProperty Name="oId" ColumnName="oId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WeiXinConfig">
+      <EntityTypeMapping TypeName="wxdinnerModel.WeiXinConfig">
+        <MappingFragment StoreEntitySet="WeiXinConfig">
+          <ScalarProperty Name="loginId" ColumnName="loginId" />
+          <ScalarProperty Name="IsApply" ColumnName="IsApply" />
+          <ScalarProperty Name="EnMode" ColumnName="EnMode" />
+          <ScalarProperty Name="EncodingAESKey" ColumnName="EncodingAESKey" />
+          <ScalarProperty Name="Token" ColumnName="Token" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="AppSecret" ColumnName="AppSecret" />
+          <ScalarProperty Name="AppID" ColumnName="AppID" />
+          <ScalarProperty Name="WeiXinID" ColumnName="WeiXinID" />
+          <ScalarProperty Name="WeiXinName" ColumnName="WeiXinName" />
+          <ScalarProperty Name="wId" ColumnName="wId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WeiXinMenu">
+      <EntityTypeMapping TypeName="wxdinnerModel.WeiXinMenu">
+        <MappingFragment StoreEntitySet="WeiXinMenu">
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="sort" ColumnName="sort" />
+          <ScalarProperty Name="menuMediaid" ColumnName="menuMediaid" />
+          <ScalarProperty Name="menuUrl" ColumnName="menuUrl" />
+          <ScalarProperty Name="menuKey" ColumnName="menuKey" />
+          <ScalarProperty Name="menuType" ColumnName="menuType" />
+          <ScalarProperty Name="menuName" ColumnName="menuName" />
+          <ScalarProperty Name="parentname" ColumnName="parentname" />
+          <ScalarProperty Name="parentid" ColumnName="parentid" />
+          <ScalarProperty Name="weixinid" ColumnName="weixinid" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WeiXinUser">
+      <EntityTypeMapping TypeName="wxdinnerModel.WeiXinUser">
+        <MappingFragment StoreEntitySet="WeiXinUser">
+          <ScalarProperty Name="adddate" ColumnName="adddate" />
+          <ScalarProperty Name="groupid" ColumnName="groupid" />
+          <ScalarProperty Name="remark" ColumnName="remark" />
+          <ScalarProperty Name="unionid" ColumnName="unionid" />
+          <ScalarProperty Name="subscribe_time" ColumnName="subscribe_time" />
+          <ScalarProperty Name="headimgurl" ColumnName="headimgurl" />
+          <ScalarProperty Name="language" ColumnName="language" />
+          <ScalarProperty Name="province" ColumnName="province" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="sex" ColumnName="sex" />
+          <ScalarProperty Name="nickname" ColumnName="nickname" />
+          <ScalarProperty Name="openid" ColumnName="openid" />
+          <ScalarProperty Name="subscribe" ColumnName="subscribe" />
+          <ScalarProperty Name="weixinid" ColumnName="weixinid" />
+          <ScalarProperty Name="uId" ColumnName="uId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SMSLog">
+      <EntityTypeMapping TypeName="wxdinnerModel.SMSLog">
+        <MappingFragment StoreEntitySet="SMSLog">
+          <ScalarProperty Name="smsTell" ColumnName="smsTell" />
+          <ScalarProperty Name="AddDate" ColumnName="AddDate" />
+          <ScalarProperty Name="smsCont" ColumnName="smsCont" />
+          <ScalarProperty Name="smsFrom" ColumnName="smsFrom" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VoiceLog">
+      <EntityTypeMapping TypeName="wxdinnerModel.VoiceLog">
+        <MappingFragment StoreEntitySet="VoiceLog">
+          <ScalarProperty Name="smsTell" ColumnName="smsTell" />
+          <ScalarProperty Name="AddDate" ColumnName="AddDate" />
+          <ScalarProperty Name="voiceCont" ColumnName="voiceCont" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

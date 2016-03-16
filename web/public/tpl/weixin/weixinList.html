@@ -1,0 +1,95 @@
+﻿<script type="text/javascript" language="javascript">
+    $(document).ready(function () {
+        $(".table").delegate("tr", "mouseover", function () {
+            if ($(".table tr").index(this) > 0) {
+                $(".tr_on").removeClass("tr_on").css("background-color", "#fff");
+                $(this).addClass("tr_on").css("background-color", "#D1D1D1");
+            }
+        });
+    });
+</script>
+<!-- AJAX无刷新 更新内容区 sart -->
+<div class="wrapper">
+    <div class="primary-head">
+        <h3 class="primary-page-header">
+            $Model.Title</h3>
+        <ul class="top-right-toolbar">
+            <li><a class="icon-plus blue-violate" href="#" onclick="dialog_div(580,530,'/public/action/DataHandler.ashx?action=GetForm&method=form_weixin','新增微信公众号',null,true);return false;"></a></li>
+        </ul>
+        <!-- 搜索 start -->
+        <div class="search-head">
+            <form id="list_search_form" onsubmit="return false;">
+            <input type="text" style="width:260px;" maxlength="30" id="sWhere" name="sWhere" value="$Model.FormParam.WhereName" size="40"/>
+            <button class="btn-search icon-search" type="input" onclick="LoadListData({getUrl:'/public/action/DataHandler.ashx?action=QueryList',postData:'method=list_weixin',formId:'#list_search_form'});">
+            </button></form>
+        </div>
+        <!-- 搜索 end -->
+    </div>
+    <div class="widget-wrap">
+        <div class="widget-head bondi-blue">
+            列表</div>
+        <div class="widget-body">
+            <table class="table">
+                <tr>
+                    <th style="width:5%;">
+                        .No
+                    </th>
+                    <th style="width:15%;">
+                        公众号名称
+                    </th>
+                    <th style="width:20%;">
+                        公众号ID
+                    </th>
+                    <th style="width:10%;">
+                        Token
+                    </th>
+                    <th style="width:15%;">
+                        加密方式
+                    </th>
+                    <th style="width:15%;">
+                        公众号状态
+                    </th>                  
+                    <th style="width:15%;">
+                        操作
+                    </th>
+                </tr>
+                #if($Model.DataList.Count>0)
+                #set($nom=1)
+                #foreach($item in $Model.DataList)
+                <tr>
+                    <td>
+                        $nom
+                    </td>
+                    <td>
+                        $!item.WeiXinName
+                    </td>
+                    <td>
+                        $!item.WeiXinID
+                    </td>
+                    <td>
+                        $!item.Token
+                    </td>
+                    <td>
+                       #if($!item.EnMode==0) 明文模式 #elseif($!item.EnMode==1) 兼容模式 #else 安全模式 #end
+                    </td>
+                    <td>
+                       #if($!item.IsApply) 已禁用 #else 正常 #end
+                    </td>
+                    <td>
+                        <a class="btn icon-edit bondi-blue" href="javascript:;" onclick="dialog_div(580,530,'/public/action/DataHandler.ashx?action=GetForm&method=form_weixin&id=$!{item.wId}','微信公众号编辑',null,true);return false;"></a>
+                        <a class="btn icon-trash green" href="javascript:;" onclick="HanlerListData({getUrl:'/public/action/DataHandler.ashx?action=DelDo',postData:'id=$!{item.wId}&method=del_weixin',formId:null,callBack:LoadListData,callParams:{getUrl:'/public/action/DataHandler.ashx?action=QueryList',postData:'method=list_weixin&curpage=$Model.CurPage',formId:'#list_search_form'}});"></a>
+                    </td>
+                </tr>
+                #set($nom=$nom+1)
+                #end
+                #end
+            </table>
+        </div>
+        <div class="widget-bottom">
+            <a href="javascript:void(0);" #if($Model.CurPage>1)onclick="gopage(0,'list_weixin');"#else style="color:#fff;" #end>首页</a><a href="javascript:void(0);" #if($Model.CurPage>1)onclick="gopage(-1,'list_weixin');"#else style="color:#fff;" #end>上一页</a>
+            <a href="javascript:void(0);" #if($Model.CurPage<$Model.PageCount)onclick="gopage(1,'list_weixin');"#else style="color:#fff;" #end>下一页</a><a href="javascript:void(0);" #if($Model.CurPage<$Model.PageCount)onclick="gopage(2,'list_weixin');"#else style="color:#fff;" #end>尾页</a>
+            <span class="bspan">共<span class="totalcount">$Model.TotalCount</span>条记录&nbsp;&nbsp;第<span id="curpage">$Model.CurPage</span>页/共<span id="totalpage">$Model.PageCount</span>页&nbsp;<input type="text" style="width:36px;height:13px;" id="gogo" /><a href="javascript:void(0);" onclick="gopage(3,'list_weixin');">GO</a></span>
+            </div>
+    </div>
+</div>
+<!-- AJAX无刷新 更新内容区 end -->

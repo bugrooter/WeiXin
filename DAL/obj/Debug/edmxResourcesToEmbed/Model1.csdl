@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="wxdinnerModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+  <EntityContainer Name="dbjmtEntities">
+    <EntitySet Name="tb_Admin" EntityType="wxdinnerModel.tb_Admin" />
+    <EntitySet Name="tb_Dishes" EntityType="wxdinnerModel.tb_Dishes" />
+    <EntitySet Name="tb_Orders" EntityType="wxdinnerModel.tb_Orders" />
+    <EntitySet Name="WeiXinConfig" EntityType="wxdinnerModel.WeiXinConfig" />
+    <EntitySet Name="WeiXinMenu" EntityType="wxdinnerModel.WeiXinMenu" />
+    <EntitySet Name="WeiXinUser" EntityType="wxdinnerModel.WeiXinUser" />
+    <EntitySet Name="SMSLog" EntityType="wxdinnerModel.SMSLog" />
+    <EntitySet Name="VoiceLog" EntityType="wxdinnerModel.VoiceLog" />
+  </EntityContainer>
+  <EntityType Name="tb_Admin">
+    <Key>
+      <PropertyRef Name="loginId" />
+    </Key>
+    <Property Type="Int64" Name="loginId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="loginName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="loginPwd" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="loginSalt" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="loginState" Nullable="false" />
+    <Property Type="DateTime" Name="loginDate" />
+    <Property Type="String" Name="loginIP" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="logintimes" />
+    <Property Type="String" Name="loginMail" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="loginMobile" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="loginFace" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="loginTName" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="loginRegDate" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_Dishes">
+    <Key>
+      <PropertyRef Name="dId" />
+    </Key>
+    <Property Type="Int64" Name="dId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="dName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="dNum" />
+    <Property Type="Decimal" Name="dPrice" Precision="10" Scale="2" />
+    <Property Type="String" Name="dDesc" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="dImg" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="dImgs" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="Boolean" Name="dState" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_Orders">
+    <Key>
+      <PropertyRef Name="oId" />
+    </Key>
+    <Property Type="Int64" Name="oId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="oName" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="oPhone" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="oDishes" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="oTotal" Precision="18" Scale="2" />
+    <Property Type="String" Name="oAddr" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="oOrderDate" />
+    <Property Type="DateTime" Name="oPushDate" />
+    <Property Type="String" Name="oState" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="WeiXinConfig">
+    <Key>
+      <PropertyRef Name="wId" />
+    </Key>
+    <Property Type="Int64" Name="wId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="WeiXinName" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="WeiXinID" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="AppID" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="AppSecret" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="URL" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Token" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="EncodingAESKey" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="EnMode" />
+    <Property Type="Boolean" Name="IsApply" />
+    <Property Type="Int64" Name="loginId" />
+  </EntityType>
+  <EntityType Name="WeiXinMenu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="weixinid" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Type="Int64" Name="parentid" />
+    <Property Type="String" Name="parentname" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="menuName" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="menuType" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="menuKey" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="menuUrl" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="menuMediaid" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="sort" />
+    <Property Type="Int32" Name="state" />
+  </EntityType>
+  <EntityType Name="WeiXinUser">
+    <Key>
+      <PropertyRef Name="uId" />
+    </Key>
+    <Property Type="Int64" Name="uId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="weixinid" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="subscribe" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="openid" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="nickname" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="sex" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="city" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="country" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="province" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="language" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="headimgurl" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="subscribe_time" />
+    <Property Type="String" Name="unionid" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="remark" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="groupid" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="adddate" />
+  </EntityType>
+  <EntityType Name="SMSLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="smsFrom" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="smsCont" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="AddDate" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="smsTell" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="VoiceLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Binary" Name="voiceCont" MaxLength="Max" FixedLength="false" />
+    <Property Type="String" Name="AddDate" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="smsTell" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

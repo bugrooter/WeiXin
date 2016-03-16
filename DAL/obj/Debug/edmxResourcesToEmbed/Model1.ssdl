@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="wxdinnerModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+  <EntityContainer Name="wxdinnerModelStoreContainer">
+    <EntitySet Name="SMSLog" EntityType="wxdinnerModel.Store.SMSLog" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tb_Admin" EntityType="wxdinnerModel.Store.tb_Admin" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tb_Dishes" EntityType="wxdinnerModel.Store.tb_Dishes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tb_Orders" EntityType="wxdinnerModel.Store.tb_Orders" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="VoiceLog" EntityType="wxdinnerModel.Store.VoiceLog" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WeiXinConfig" EntityType="wxdinnerModel.Store.WeiXinConfig" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WeiXinMenu" EntityType="wxdinnerModel.Store.WeiXinMenu" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WeiXinUser" EntityType="wxdinnerModel.Store.WeiXinUser" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="SMSLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="smsFrom" Type="varchar" MaxLength="50" />
+    <Property Name="smsCont" Type="varchar" MaxLength="300" />
+    <Property Name="AddDate" Type="varchar" MaxLength="50" />
+    <Property Name="smsTell" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tb_Admin">
+    <Key>
+      <PropertyRef Name="loginId" />
+    </Key>
+    <Property Name="loginId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="loginName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="loginPwd" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="loginSalt" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="loginState" Type="int" Nullable="false" />
+    <Property Name="loginDate" Type="datetime" />
+    <Property Name="loginIP" Type="varchar" MaxLength="20" />
+    <Property Name="logintimes" Type="int" />
+    <Property Name="loginMail" Type="varchar" MaxLength="50" />
+    <Property Name="loginMobile" Type="varchar" MaxLength="20" />
+    <Property Name="loginFace" Type="varchar" MaxLength="200" />
+    <Property Name="loginTName" Type="varchar" MaxLength="10" />
+    <Property Name="loginRegDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_Dishes">
+    <Key>
+      <PropertyRef Name="dId" />
+    </Key>
+    <Property Name="dId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="dName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="dNum" Type="int" />
+    <Property Name="dPrice" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="dDesc" Type="text" />
+    <Property Name="dImg" Type="varchar" MaxLength="500" />
+    <Property Name="dImgs" Type="text" />
+    <Property Name="dState" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_Orders">
+    <Key>
+      <PropertyRef Name="oId" />
+    </Key>
+    <Property Name="oId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="oName" Type="varchar" MaxLength="50" />
+    <Property Name="oPhone" Type="varchar" MaxLength="50" />
+    <Property Name="oDishes" Type="varchar" MaxLength="500" />
+    <Property Name="oTotal" Type="decimal" Scale="2" />
+    <Property Name="oAddr" Type="varchar" MaxLength="500" />
+    <Property Name="oOrderDate" Type="datetime" />
+    <Property Name="oPushDate" Type="datetime" />
+    <Property Name="oState" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="VoiceLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="voiceCont" Type="image" />
+    <Property Name="AddDate" Type="varchar" MaxLength="50" />
+    <Property Name="smsTell" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="WeiXinConfig">
+    <Key>
+      <PropertyRef Name="wId" />
+    </Key>
+    <Property Name="wId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="WeiXinName" Type="varchar" MaxLength="50" />
+    <Property Name="WeiXinID" Type="varchar" MaxLength="500" />
+    <Property Name="AppID" Type="varchar" MaxLength="500" />
+    <Property Name="AppSecret" Type="varchar" MaxLength="500" />
+    <Property Name="URL" Type="varchar" MaxLength="500" />
+    <Property Name="Token" Type="varchar" MaxLength="100" />
+    <Property Name="EncodingAESKey" Type="varchar" MaxLength="500" />
+    <Property Name="EnMode" Type="int" />
+    <Property Name="IsApply" Type="bit" />
+    <Property Name="loginId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="WeiXinMenu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="weixinid" Type="varchar" MaxLength="500" />
+    <Property Name="parentid" Type="bigint" />
+    <Property Name="parentname" Type="varchar" MaxLength="50" />
+    <Property Name="menuName" Type="varchar" MaxLength="50" />
+    <Property Name="menuType" Type="varchar" MaxLength="50" />
+    <Property Name="menuKey" Type="varchar" MaxLength="300" />
+    <Property Name="menuUrl" Type="varchar" MaxLength="500" />
+    <Property Name="menuMediaid" Type="varchar" MaxLength="500" />
+    <Property Name="sort" Type="int" />
+    <Property Name="state" Type="int" />
+  </EntityType>
+  <EntityType Name="WeiXinUser">
+    <Key>
+      <PropertyRef Name="uId" />
+    </Key>
+    <Property Name="uId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="weixinid" Type="varchar" MaxLength="500" />
+    <Property Name="subscribe" Type="varchar" MaxLength="10" />
+    <Property Name="openid" Type="varchar" MaxLength="500" />
+    <Property Name="nickname" Type="varchar" MaxLength="50" />
+    <Property Name="sex" Type="varchar" MaxLength="10" />
+    <Property Name="city" Type="varchar" MaxLength="50" />
+    <Property Name="country" Type="varchar" MaxLength="50" />
+    <Property Name="province" Type="varchar" MaxLength="50" />
+    <Property Name="language" Type="varchar" MaxLength="50" />
+    <Property Name="headimgurl" Type="varchar" MaxLength="500" />
+    <Property Name="subscribe_time" Type="datetime" />
+    <Property Name="unionid" Type="varchar" MaxLength="500" />
+    <Property Name="remark" Type="varchar" MaxLength="500" />
+    <Property Name="groupid" Type="varchar" MaxLength="500" />
+    <Property Name="adddate" Type="datetime" />
+  </EntityType>
+</Schema>

@@ -1,0 +1,36 @@
+d:\my documents\visual studio 2010\Projects\wxdinner\DAL\bin\Debug\DAL.dll.config
+d:\my documents\visual studio 2010\Projects\wxdinner\DAL\bin\Debug\DAL.dll
+d:\my documents\visual studio 2010\Projects\wxdinner\DAL\bin\Debug\DAL.pdb
+d:\my documents\visual studio 2010\Projects\wxdinner\DAL\obj\Debug\ResolveAssemblyReference.cache
+d:\my documents\visual studio 2010\Projects\wxdinner\DAL\obj\Debug\DAL.dll
+d:\my documents\visual studio 2010\Projects\wxdinner\DAL\obj\Debug\DAL.pdb
+d:\my documents\visual studio 2010\Projects\wxdinner\DAL\bin\Debug\comm.dll
+d:\my documents\visual studio 2010\Projects\wxdinner\DAL\bin\Debug\Newtonsoft.Json.dll
+d:\my documents\visual studio 2010\Projects\wxdinner\DAL\bin\Debug\NVelocity.dll
+d:\my documents\visual studio 2010\Projects\wxdinner\DAL\bin\Debug\comm.pdb
+d:\my documents\visual studio 2010\Projects\wxdinner\DAL\bin\Debug\Newtonsoft.Json.pdb
+d:\my documents\visual studio 2010\Projects\wxdinner\DAL\bin\Debug\Newtonsoft.Json.xml
+D:\code\wxdinner\DAL\bin\Debug\DAL.dll.config
+D:\code\wxdinner\DAL\bin\Debug\DAL.dll
+D:\code\wxdinner\DAL\bin\Debug\DAL.pdb
+D:\code\wxdinner\DAL\bin\Debug\comm.dll
+D:\code\wxdinner\DAL\bin\Debug\Newtonsoft.Json.dll
+D:\code\wxdinner\DAL\bin\Debug\NVelocity.dll
+D:\code\wxdinner\DAL\bin\Debug\comm.pdb
+D:\code\wxdinner\DAL\bin\Debug\Newtonsoft.Json.pdb
+D:\code\wxdinner\DAL\bin\Debug\Newtonsoft.Json.xml
+D:\code\wxdinner\DAL\obj\Debug\ResolveAssemblyReference.cache
+D:\code\wxdinner\DAL\obj\Debug\DAL.dll
+D:\code\wxdinner\DAL\obj\Debug\DAL.pdb
+D:\code\微信后台管理系统源码\DAL\bin\Debug\DAL.dll.config
+D:\code\微信后台管理系统源码\DAL\bin\Debug\DAL.dll
+D:\code\微信后台管理系统源码\DAL\bin\Debug\DAL.pdb
+D:\code\微信后台管理系统源码\DAL\bin\Debug\comm.dll
+D:\code\微信后台管理系统源码\DAL\bin\Debug\Newtonsoft.Json.dll
+D:\code\微信后台管理系统源码\DAL\bin\Debug\NVelocity.dll
+D:\code\微信后台管理系统源码\DAL\bin\Debug\comm.pdb
+D:\code\微信后台管理系统源码\DAL\bin\Debug\Newtonsoft.Json.pdb
+D:\code\微信后台管理系统源码\DAL\bin\Debug\Newtonsoft.Json.xml
+D:\code\微信后台管理系统源码\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+D:\code\微信后台管理系统源码\DAL\obj\Debug\DAL.dll
+D:\code\微信后台管理系统源码\DAL\obj\Debug\DAL.pdb

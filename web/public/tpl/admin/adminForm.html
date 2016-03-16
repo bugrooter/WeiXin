@@ -1,0 +1,55 @@
+﻿<style type="text/css">
+    #edit_loginName{width: 175px;height:18px;}
+    #edit_loginPwd{width:170px;height:20px;}
+</style>
+<script type="text/javascript" language="javascript">
+    function checkFrom() {
+        if (${JQ}trim($("#edit_loginName").val())=="") {
+            msg_error("请输入登录用户名称");
+            document.getElementById('edit_roleName').focus();
+            return false;
+        }
+        if($(loginId).val()==""&&${JQ}trim($("#edit_loginPwd").val())=="")
+        {
+            msg_error("请输入登录用户密码");
+            return false;
+        }
+        if ($("#edit_roleId").val()=="") {
+            msg_error("请选择登录用户角色");
+            return false;
+        }
+        return true;
+    }
+</script>
+<div class="container form-list">
+    <div class="form-head bondi-blue">
+        $Model.Title</div>
+    <div class="form-body">
+        <form id="dataForm">
+        <dl>
+            <dt>用户登陆名称<input type="hidden" id="loginId" name="loginId" value="$!{Model.AdminModel.loginId}" /></dt>
+            <dd>
+                <input type="text" id="edit_loginName" #if($!{Model.AdminModel.loginId}>0)readonly="readonly"#end name="loginName" maxlength="30" value="$!{Model.AdminModel.loginName}" /><span style="color:Red;">*登陆后台操作的登陆名称</span></dd>
+        </dl>
+        <dl>
+            <dt>用户登陆密码</dt>
+            <dd>
+                <input type="password" id="edit_loginPwd" name="loginPwd" maxlength="10" value="" /><span style="color:Red;">*修改时为空时保持原密码</span></dd>
+        </dl>
+        <dl>
+            <dt>用户当前状态</dt>
+            <dd>
+                <select id="loginState" name="loginState" style="width: 175px;height:30px;">
+                    <option style="height:30px;" value="0" #if($!{Model.AdminModel.loginState}==0) selected #end>允许登录</option>
+                    <option style="height:30px;" value="1" #if($!{Model.AdminModel.loginState}==1) selected #end>锁定登陆</option>
+                </select></dd>
+        </dl>
+        <dl>
+            <dt>&nbsp;</dt>
+            <dd>
+            <input class="btn green" type="button" onclick="doSave(checkFrom,{getUrl:'/public/action/DataHandler.ashx?action=saveDo&method=sav_admin',postData:null, formId:'#dataForm',callBack:LoadListData,callParams:{getUrl:'/public/action/DataHandler.ashx?action=QueryList',postData:'method=list_admin&curpage='+$('#curpage').text(),formId:'#list_search_form'}});" value="保存设置"/><input class="btn" type="button"
+                    value="取消修改" onclick="dialog_close();"/></dd>
+        </dl>
+        </form>
+    </div>
+</div>

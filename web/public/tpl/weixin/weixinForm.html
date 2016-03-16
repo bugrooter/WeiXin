@@ -1,0 +1,82 @@
+﻿<script src="/Scripts/jquery-1.11.0.min.js" type="text/javascript"></script>
+<style type="text/css">
+
+</style>
+<script type="text/javascript" language="javascript">
+    function checkFrom() {
+        var flag = true;
+        $("input[type='text']").each(function () {
+            if ($(this).parent().find("span").text() == "*" && $(this).val() == "") {
+                msg_error($(this).parent().parent().find("dt").text() + "不能为空");
+                flag = false;
+                return;
+            }
+        });
+        return flag;
+    }
+</script>
+<div class="container form-list">
+    <div class="form-head bondi-blue">
+        $Model.Title</div>
+    <div class="form-body">
+        <form id="dataForm">
+        <dl>
+            <dt>公众号名称<input type="hidden" id="wId" name="wId" value="$!{Model.DataModel.wId}" />
+            </dt>
+            <dd>
+                <input type="text" style="width:265px;" id="WeiXinName" name="WeiXinName" maxlength="50" value="$!{Model.DataModel.WeiXinName}" /><span style="color:Red;">*</span></dd>
+        </dl>
+        <dl>
+            <dt>公众号ID</dt>
+            <dd>
+                <input type="text" style="width:265px;" id="WeiXinID" name="WeiXinID" maxlength="50" value="$!{Model.DataModel.WeiXinID}" /></dd>
+        </dl>
+        <dl>
+            <dt>服务器URL</dt>
+            <dd>
+                <input type="text" style="width:265px;" id="URL" name="URL" maxlength="500" value="$!{Model.DataModel.URL}" /><span style="color:Red;">*</span></dd>
+        </dl>
+        <dl>
+            <dt>应用ID</dt>
+            <dd>
+                <input type="text" style="width:265px;" id="AppID" name="AppID" maxlength="50" value="$!{Model.DataModel.AppID}" /><span style="color:Red;">*</span></dd>
+        </dl>
+        <dl>
+            <dt>应用密钥</dt>
+            <dd>
+                <input type="text" style="width:265px;" id="AppSecret" name="AppSecret" maxlength="500" value="$!{Model.DataModel.AppSecret}" /><span style="color:Red;">*</span></dd>
+        </dl>
+        <dl>
+            <dt>Token令牌</dt>
+            <dd>
+                <input type="text" style="width:265px;" id="Token" name="Token" maxlength="100" value="$!{Model.DataModel.Token}" /><span style="color:Red;">*</span></dd>
+        </dl>
+        <dl>
+            <dt>消息密钥</dt>
+            <dd>
+                <input type="text" style="width:265px;" id="EncodingAESKey" name="EncodingAESKey" maxlength="500" value="$!{Model.DataModel.EncodingAESKey}" /><span style="color:Red;">*</span></dd>
+        </dl>
+        <dl>
+            <dt>加解密方式</dt>
+            <dd>
+                <select id="EnMode" name="EnMode" style="width: 265px;height:30px;">
+                <option style="height:30px;" value="0" #if($!Model.DataModel.EnMode=="0") selected #end>明文模式</option>
+                <option style="height:30px;" value="1" #if($!Model.DataModel.EnMode=="1") selected #end>兼容模式</option>
+                <option style="height:30px;" value="2" #if($!Model.DataModel.EnMode=="2") selected #end>安全模式</option>
+                </select><span style="color:Red;">*</span></dd>
+        </dl>
+        <dl>
+            <dt>公众号状态</dt>
+            <dd>
+                <input type="radio" style="float:none;padding:0;margin:0;" #if($!Model.DataModel.IsApply==true) checked #end id="IsApply1" name="IsApply" value="true" /><label for="IsApply1" style="float:none;padding:0;margin:0;">已禁用</label><input style="float:none;padding:0;margin:0 0 0 50px;" type="radio" #if($!Model.DataModel.IsApply==false) checked #end id="IsApply" name="IsApply" value="false" /><label for="IsApply" style="float:none;padding:0;margin:0;">正常</label></dd>
+        </dl>
+        <dl>
+            <dt>&nbsp;</dt>
+            <dd>
+            <input class="btn green" type="button" onclick="doSave(checkFrom,{getUrl:'/public/action/DataHandler.ashx?action=saveDo&method=sav_weixin',postData:null, formId:'#dataForm',callBack:LoadListData,callParams:{getUrl:'/public/action/DataHandler.ashx?action=QueryList',postData:'method=list_weixin&curpage='+$('#curpage').text(),formId:'#list_search_form'}});" value="保存设置"/><input class="btn" type="button"
+                    value="取消修改" onclick="dialog_close();"/></dd>
+        </dl>
+
+        </form>
+    </div>
+</div>

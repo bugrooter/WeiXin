@@ -1,0 +1,115 @@
+﻿<script type="text/javascript" language="javascript">
+    $(document).ready(function () {
+        $(".table").delegate("tr", "mouseover", function () {
+            if ($(".table tr").index(this) > 0) {
+                $(".tr_on").removeClass("tr_on").css("background-color", "#fff");
+                $(this).addClass("tr_on").css("background-color", "#D1D1D1");
+            }
+        });
+        $("#weixinid").change(function () {
+            LoadListData({ getUrl: '/public/action/DataHandler.ashx?action=QueryList', postData: 'method=list_weixinmenu', formId: '#list_search_form' });
+        });
+    });
+
+    function add() {
+        if ($("#weixinid").val() == "0" ) {
+            msg_error("请选择公众号!");
+            return;
+        }
+        dialog_div(650, 480, '/public/action/DataHandler.ashx?action=GetForm&method=form_weixinmenu&weixinid=' + $("#weixinid").val(), '新增微信菜单', null, true);
+    }
+
+    function create() {
+        if ($("#weixinid").val() == "0") {
+            msg_error("请选择公众号!");
+            return;
+        }
+        HanlerListData({ getUrl: '/public/action/DataHandler.ashx?action=CtrlDo', postData: 'id=$!{item.uId}&method=createmenu&weixinid=' + $("#weixinid").val(), formId: null, callBack: msg_error, callParams: "更新自定义菜单成功" });
+    }
+</script>
+<!-- AJAX无刷新 更新内容区 sart -->
+<div class="wrapper">
+    <div class="primary-head">
+        <h3 class="primary-page-header">
+            $Model.Title</h3>
+        <ul class="top-right-toolbar">
+            <li><a class="icon-plus blue-violate" href="#" onclick="add();"></a></li>
+            <li><a class="icon-cloud-upload green" href="javascript:;" onclick="create();"></a></li>
+        </ul>
+        <!-- 搜索 start -->
+        <div class="search-head">
+            <form id="list_search_form" onsubmit="return false;">
+            <select id="weixinid" name="weixinid" style="width: 265px;height:30px;">
+                <option style="height:30px;" value="0">==请选择==</option>
+                #foreach($item in $Model.WeiXinList)
+                <option style="height:30px;" value="$item.WeiXinID" #if($Model.FormParam.WhereName==$item.WeiXinID) selected #end>$item.WeiXinName</option>
+                #end
+            </select>
+            <button class="btn-search icon-search" type="input" onclick="LoadListData({getUrl:'/public/action/DataHandler.ashx?action=QueryList',postData:'method=list_weixinmenu',formId:'#list_search_form'});">
+            </button></form>
+        </div>
+        <!-- 搜索 end -->
+    </div>
+    <div class="widget-wrap">
+        <div class="widget-head bondi-blue">
+            列表</div>
+        <div class="widget-body">
+            <table class="table">
+                <tr>
+                    <th style="width:5%;">
+                        .No
+                    </th>
+                    <th style="width:15%;">
+                        菜单名称
+                    </th>
+                    <th style="width:15%;">
+                        菜单类型
+                    </th>
+                    <th style="width:15%;">
+                        菜单key
+                    </th>
+                    <th style="width:20%;">
+                        菜单链接
+                    </th> 
+                    <th style="width:10%;">
+                        菜单状态
+                    </th>               
+                    <th style="width:15%;">
+                        操作
+                    </th>
+                </tr>
+                #if($Model.DataList.Count>0)
+                #set($nom=1)
+                #foreach($item in $Model.DataList)
+                <tr>
+                    <td>
+                        $nom
+                    </td>
+                    <td style=" text-align:left;padding-left:15px;">
+                        #if($item.parentid>-1) &nbsp;&nbsp;&nbsp;&nbsp;|------$!item.menuName #else $!item.menuName #end
+                    </td>
+                    <td>
+                        $!item.menuType
+                    </td>
+                    <td>
+                        $!item.menuKey
+                    </td>
+                    <td>
+                       $!item.menuUrl
+                    </td>
+                    <td>
+                       #if($!item.state==0) 正常 #else 禁用 #end
+                    </td>
+                    <td>
+                        <a class="btn icon-edit bondi-blue" href="javascript:;" onclick="dialog_div(650,480,'/public/action/DataHandler.ashx?action=GetForm&method=form_weixinmenu&id=$!{item.Id}','微信公众号菜单编辑',null,true);return false;"></a>
+                        <a class="btn icon-trash green" href="javascript:;" onclick="HanlerListData({getUrl:'/public/action/DataHandler.ashx?action=DelDo',postData:'id=$!{item.Id}&method=del_weixinmenu',formId:null,callBack:LoadListData,callParams:{getUrl:'/public/action/DataHandler.ashx?action=QueryList',postData:'method=list_weixinmenu&curpage=$Model.CurPage',formId:'#list_search_form'}});"></a>
+                    </td>
+                </tr>
+                #set($nom=$nom+1)
+                #end
+                #end
+            </table>
+        </div>
+    </div>
+</div>
+<!-- AJAX无刷新 更新内容区 end -->

@@ -1,0 +1,43 @@
+d:\my documents\visual studio 2010\Projects\wxdinner\BLL\obj\Debug\ResolveAssemblyReference.cache
+d:\my documents\visual studio 2010\Projects\wxdinner\BLL\bin\Debug\BLL.dll
+d:\my documents\visual studio 2010\Projects\wxdinner\BLL\bin\Debug\BLL.pdb
+d:\my documents\visual studio 2010\Projects\wxdinner\BLL\bin\Debug\comm.dll
+d:\my documents\visual studio 2010\Projects\wxdinner\BLL\bin\Debug\DAL.dll
+d:\my documents\visual studio 2010\Projects\wxdinner\BLL\bin\Debug\Newtonsoft.Json.dll
+d:\my documents\visual studio 2010\Projects\wxdinner\BLL\bin\Debug\NVelocity.dll
+d:\my documents\visual studio 2010\Projects\wxdinner\BLL\bin\Debug\comm.pdb
+d:\my documents\visual studio 2010\Projects\wxdinner\BLL\bin\Debug\DAL.pdb
+d:\my documents\visual studio 2010\Projects\wxdinner\BLL\bin\Debug\Newtonsoft.Json.pdb
+d:\my documents\visual studio 2010\Projects\wxdinner\BLL\bin\Debug\Newtonsoft.Json.xml
+d:\my documents\visual studio 2010\Projects\wxdinner\BLL\obj\Debug\BLL.dll
+d:\my documents\visual studio 2010\Projects\wxdinner\BLL\obj\Debug\BLL.pdb
+D:\code\wxdinner\BLL\bin\Debug\BLL.dll
+D:\code\wxdinner\BLL\bin\Debug\BLL.pdb
+D:\code\wxdinner\BLL\bin\Debug\comm.dll
+D:\code\wxdinner\BLL\bin\Debug\DAL.dll
+D:\code\wxdinner\BLL\bin\Debug\Newtonsoft.Json.dll
+D:\code\wxdinner\BLL\bin\Debug\NVelocity.dll
+D:\code\wxdinner\BLL\bin\Debug\comm.pdb
+D:\code\wxdinner\BLL\bin\Debug\DAL.pdb
+D:\code\wxdinner\BLL\bin\Debug\Newtonsoft.Json.pdb
+D:\code\wxdinner\BLL\bin\Debug\Newtonsoft.Json.xml
+D:\code\wxdinner\BLL\obj\Debug\ResolveAssemblyReference.cache
+D:\code\wxdinner\BLL\obj\Debug\BLL.dll
+D:\code\wxdinner\BLL\obj\Debug\BLL.pdb
+D:\code\wxdinner\BLL\bin\Debug\WeiXinAPI.dll
+D:\code\wxdinner\BLL\bin\Debug\WeiXinAPI.pdb
+D:\code\微信后台管理系统源码\BLL\bin\Debug\BLL.dll
+D:\code\微信后台管理系统源码\BLL\bin\Debug\BLL.pdb
+D:\code\微信后台管理系统源码\BLL\bin\Debug\comm.dll
+D:\code\微信后台管理系统源码\BLL\bin\Debug\DAL.dll
+D:\code\微信后台管理系统源码\BLL\bin\Debug\WeiXinAPI.dll
+D:\code\微信后台管理系统源码\BLL\bin\Debug\Newtonsoft.Json.dll
+D:\code\微信后台管理系统源码\BLL\bin\Debug\NVelocity.dll
+D:\code\微信后台管理系统源码\BLL\bin\Debug\comm.pdb
+D:\code\微信后台管理系统源码\BLL\bin\Debug\DAL.pdb
+D:\code\微信后台管理系统源码\BLL\bin\Debug\WeiXinAPI.pdb
+D:\code\微信后台管理系统源码\BLL\bin\Debug\Newtonsoft.Json.pdb
+D:\code\微信后台管理系统源码\BLL\bin\Debug\Newtonsoft.Json.xml
+D:\code\微信后台管理系统源码\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+D:\code\微信后台管理系统源码\BLL\obj\Debug\BLL.dll
+D:\code\微信后台管理系统源码\BLL\obj\Debug\BLL.pdb
